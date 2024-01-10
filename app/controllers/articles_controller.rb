@@ -23,9 +23,7 @@ class ArticlesController < ApplicationController
             flash[:notice] = "Article was created successfully"
              redirect_to (@article)
         else 
-            redirect_to new_article_path, alert: @article.errors.full_messages.join(', ')
-
-            #render 'new'
+            render 'new'
         end 
     end
 
@@ -34,9 +32,7 @@ class ArticlesController < ApplicationController
         if @article.update(params.require(:article).permit(:title, :description))
             flash[:notice] = "Article was updated successfully"
         else 
-            redirect_to new_article_path, alert: @article.errors.full_messages.join(', ')
-
-            #render 'edit'
+            render 'edit'
         end 
     end 
 
